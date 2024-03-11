@@ -1,52 +1,59 @@
 package demo;
 
+import java.awt.Color;
+import java.awt.Component;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Font;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.event.ActionListener;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.JCheckBox;
-import javax.swing.SwingConstants;
 
 public class PageControle extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
-	private JTextField textField_7;
-	private JTextField textField_8;
-	private JTextField textField_9;
-	private JTextField textField_10;
-	private JTextField textField_11;
-	private JTextField textField_12;
-	private JTextField textField_13;
-	private JTextField textField_14;
-	private JTextField textField_15;
-	private JTextField textField_16;
-	private JTextField textField_17;
-	private JLabel lblNewLabel;
-	private JLabel lblNewLabel_1;
-	private JLabel lblNewLabel_2;
-	private JLabel lblM_3;
-	private JLabel lblM_4;
-	private JLabel lblM_5;
-	private JCheckBox chckbxNewCheckBox_4;
-	private JCheckBox chckbxNewCheckBox_5;
 
+	private Color GREY = new Color(150, 150, 150);
+	
+    private static final int NUM_ROWS = 3;
+    private static final int NUM_COLS = 5;
+    
+    private boolean validSpeed(String text) {
+    	if (text.isBlank()) {
+            return true; 
+        }
+    	int value = Integer.parseInt(text);
+    	return value >= 0 && value <= 360;
+    }
+    
+    private boolean validAngle(String text) {
+    	if (text.isBlank()) {
+            return true; 
+        }
+    	int value = Integer.parseInt(text);
+        return value >= 0 && value <= 360;
+    }
+    
+    private boolean validBaudRate(String text) {
+    	if (text.isBlank()) {
+            return true; 
+        }
+    	int value = Integer.parseInt(text);
+        Integer integerValue = Integer.valueOf(value);
+        return (integerValue instanceof Integer);   
+    }
 	/**
 	 * Launch the application.
 	 */
@@ -70,7 +77,7 @@ public class PageControle extends JFrame {
 	 */
 	public PageControle() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 800, 800);
+		setSize(800, 800);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -87,154 +94,161 @@ public class PageControle extends JFrame {
 		labelVersion.setBounds(391, 650, 49, 14);
 		contentPane.add(labelVersion);
 		
-		JLabel lblM = new JLabel("M1");
-		lblM.setBounds(176, 183, 21, 27);
-		contentPane.add(lblM);
-		
-		JLabel lblM_1 = new JLabel("M2");
-		lblM_1.setBounds(277, 189, 26, 14);
-		contentPane.add(lblM_1);
-		
-		JLabel lblM_2 = new JLabel("M3");
-		lblM_2.setBounds(366, 189, 21, 14);
-		contentPane.add(lblM_2);
-		
-		textField = new JTextField();
-		textField.setBounds(138, 214, 96, 60);
-		contentPane.add(textField);
-		textField.setColumns(10);
-		
-		textField_1 = new JTextField();
-		textField_1.setBounds(233, 214, 96, 60);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
-		
-		textField_2 = new JTextField();
-		textField_2.setBounds(326, 214, 96, 60);
-		contentPane.add(textField_2);
-		textField_2.setColumns(10);
-		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(420, 214, 96, 60);
-		contentPane.add(textField_3);
-		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		textField_4.setBounds(515, 214, 96, 60);
-		contentPane.add(textField_4);
-		
-		textField_5 = new JTextField();
-		textField_5.setColumns(10);
-		textField_5.setBounds(608, 214, 96, 60);
-		contentPane.add(textField_5);
-		
-		textField_6 = new JTextField();
-		textField_6.setColumns(10);
-		textField_6.setBounds(138, 273, 96, 60);
-		contentPane.add(textField_6);
-		
-		textField_7 = new JTextField();
-		textField_7.setColumns(10);
-		textField_7.setBounds(233, 273, 96, 60);
-		contentPane.add(textField_7);
-		
-		textField_8 = new JTextField();
-		textField_8.setColumns(10);
-		textField_8.setBounds(326, 273, 96, 60);
-		contentPane.add(textField_8);
-		
-		textField_9 = new JTextField();
-		textField_9.setColumns(10);
-		textField_9.setBounds(420, 273, 96, 60);
-		contentPane.add(textField_9);
-		
-		textField_10 = new JTextField();
-		textField_10.setColumns(10);
-		textField_10.setBounds(515, 273, 96, 60);
-		contentPane.add(textField_10);
-		
-		textField_11 = new JTextField();
-		textField_11.setColumns(10);
-		textField_11.setBounds(608, 273, 96, 60);
-		contentPane.add(textField_11);
-		
-		textField_12 = new JTextField();
-		textField_12.setColumns(10);
-		textField_12.setBounds(138, 332, 96, 60);
-		contentPane.add(textField_12);
-		
-		textField_13 = new JTextField();
-		textField_13.setColumns(10);
-		textField_13.setBounds(233, 332, 96, 60);
-		contentPane.add(textField_13);
-		
-		textField_14 = new JTextField();
-		textField_14.setColumns(10);
-		textField_14.setBounds(326, 332, 96, 60);
-		contentPane.add(textField_14);
-		
-		textField_15 = new JTextField();
-		textField_15.setColumns(10);
-		textField_15.setBounds(420, 332, 96, 60);
-		contentPane.add(textField_15);
-		
-		textField_16 = new JTextField();
-		textField_16.setColumns(10);
-		textField_16.setBounds(515, 332, 96, 60);
-		contentPane.add(textField_16);
-		
-		textField_17 = new JTextField();
-		textField_17.setColumns(10);
-		textField_17.setBounds(608, 332, 96, 60);
-		contentPane.add(textField_17);
-		
-		lblNewLabel = new JLabel("Vitesse");
-		lblNewLabel.setBounds(64, 237, 49, 14);
-		contentPane.add(lblNewLabel);
-		
-		lblNewLabel_1 = new JLabel("Angle");
-		lblNewLabel_1.setBounds(64, 296, 49, 14);
-		contentPane.add(lblNewLabel_1);
-		
-		lblNewLabel_2 = new JLabel("Baud Rate");
-		lblNewLabel_2.setBounds(64, 355, 60, 14);
-		contentPane.add(lblNewLabel_2);
-		
-		lblM_3 = new JLabel("M4");
-		lblM_3.setBounds(456, 189, 24, 14);
-		contentPane.add(lblM_3);
-		
-		lblM_4 = new JLabel("M5");
-		lblM_4.setBounds(558, 189, 21, 14);
-		contentPane.add(lblM_4);
-		
-		lblM_5 = new JLabel("M6");
-		lblM_5.setBounds(653, 189, 21, 14);
-		contentPane.add(lblM_5);
-		
-		JCheckBox chckbxNewCheckBox = new JCheckBox("");
-		chckbxNewCheckBox.setBounds(176, 159, 21, 23);
-		contentPane.add(chckbxNewCheckBox);
-		
-		JCheckBox chckbxNewCheckBox_1 = new JCheckBox("");
-		chckbxNewCheckBox_1.setBounds(267, 159, 21, 23);
-		contentPane.add(chckbxNewCheckBox_1);
-		
-		JCheckBox chckbxNewCheckBox_2 = new JCheckBox("");
-		chckbxNewCheckBox_2.setBounds(366, 159, 21, 23);
-		contentPane.add(chckbxNewCheckBox_2);
-		
-		JCheckBox chckbxNewCheckBox_3 = new JCheckBox("");
-		chckbxNewCheckBox_3.setBounds(456, 159, 21, 23);
-		contentPane.add(chckbxNewCheckBox_3);
-		
-		chckbxNewCheckBox_4 = new JCheckBox("");
-		chckbxNewCheckBox_4.setBounds(558, 159, 21, 23);
-		contentPane.add(chckbxNewCheckBox_4);
-		
-		chckbxNewCheckBox_5 = new JCheckBox("");
-		chckbxNewCheckBox_5.setBounds(653, 159, 21, 23);
-		contentPane.add(chckbxNewCheckBox_5);
+		String[] rowLabels = {"Vitesse", "Angle", "Baud Rate"};
+        for (int row = 0; row < NUM_ROWS; row++) {
+            JLabel label = new JLabel(rowLabels[row]);
+            label.setBounds(70, 100 + row * 50, 80, 30);
+            contentPane.add(label);
+        }
+        
+	        // checkboxes with its associated text fields
+	        for (int col = 0; col < NUM_COLS; col++) {
+	        	JCheckBox checkBox = new JCheckBox("M" + (col + 1));
+	        	checkBox.setBounds(180 + col * 100, 50, 80, 25);
+	            contentPane.add(checkBox);
+	            
+	            for (int row = 0; row < NUM_ROWS; row++) {
+	                JTextField textField = new JTextField();
+	                textField.setBounds(150 + col * 100, 100 + row * 50, 100, 50);
+	                textField.setBackground(GREY);
+	            	textField.setEditable(false);
+
+	                contentPane.add(textField);
+
+	                // actionListener for each checkbox
+	                checkBox.addActionListener(new CheckBoxListener(textField));
+	                // focusListener for each row textFiled
+	                textField.addFocusListener(new TextFieldFocusListener(textField, row));
+	            }
+	        }
+	        
+	        JButton submitButton = new JButton("Submit");
+	        submitButton.setBounds(350, 400, 100, 30);
+	        contentPane.add(submitButton);
+
+	        // Add action listener to submit button
+	        submitButton.addActionListener(new ActionListener() {
+	            @Override
+	            public void actionPerformed(ActionEvent e) {
+	                if (canSubmit()) {
+	                    clearFields();
+	                }
+	            }
+	        });
 	}
+	
+	private boolean canSubmit() {
+        for (int col = 0; col < NUM_COLS; col++) {
+            JCheckBox checkBox = (JCheckBox) contentPane.getComponentAt(180 + col * 100, 50);
+            if (checkBox.isSelected()) {
+                for (int row = 0; row < NUM_ROWS; row++) {
+                    JTextField textField = (JTextField) contentPane.getComponentAt(150 + col * 100, 100 + row * 50);
+                    if (textField.getText().isEmpty()) {
+                    	JOptionPane.showMessageDialog(null, "Please fill all rows in checked columns.", "Error", JOptionPane.ERROR_MESSAGE);
+                        return false; 
+                    }
+                    if(row == 0 && !(validSpeed(textField.getText()))) {
+                    	JOptionPane.showMessageDialog(null, "Invalid speed. Value must be between 0-100.", "Error", JOptionPane.ERROR_MESSAGE);
+                    	return false; 
+                    }
+                    if(row == 1 && !(validAngle(textField.getText()))) {
+                    	JOptionPane.showMessageDialog(null, "Invalid Angle. Value must be between 0-360.", "Error", JOptionPane.ERROR_MESSAGE);
+                    	return false; 
+                    }
+                    if(row == 2 && !(validBaudRate(textField.getText()))) {
+                    	JOptionPane.showMessageDialog(null, "Invalid Baud Rate", "Error", JOptionPane.ERROR_MESSAGE);
+                    	return false; 
+                    }
+                }
+            }
+        }
+        return true; 
+    }
+	
+	private void clearFields() {
+		
+        for (Component component : contentPane.getComponents()) {
+            if (component instanceof JTextField) {
+                JTextField textField = (JTextField) component;
+                textField.setText("");
+                textField.setBackground(GREY);
+            }
+            else if (component instanceof JCheckBox) {
+                JCheckBox checkBox = (JCheckBox) component;
+                checkBox.setSelected(false);
+            }
+        }
+	} 
+	
+	private class CheckBoxListener implements ActionListener {
+        private JTextField textFieldToUpdate;
+
+        public CheckBoxListener(JTextField textField) {
+            this.textFieldToUpdate = textField;
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            JCheckBox checkBox = (JCheckBox) e.getSource();
+            if (checkBox.isSelected()) {
+            	textFieldToUpdate.setEditable(true);
+                textFieldToUpdate.setBackground(Color.WHITE); 
+            } else {
+            	textFieldToUpdate.setEditable(false);
+                textFieldToUpdate.setBackground(GREY); 
+            }
+        }
+	}
+	
+	private class TextFieldFocusListener extends FocusAdapter {
+        private JTextField textField;
+        private int rowIndex;
+
+        public TextFieldFocusListener(JTextField textField, int rowIndex) {
+            this.textField = textField;
+            this.rowIndex = rowIndex;
+        }
+
+        @Override
+        public void focusLost(FocusEvent e) {
+            String text = textField.getText();
+            if (!isValid(text)) {
+                textField.requestFocusInWindow();
+            }
+        }
+
+        private boolean isValid(String text) {
+        	// Validate Vitesse 
+            if (rowIndex == 0) {           
+                try {
+                    validSpeed(text); 
+                } catch (NumberFormatException e) {
+                    JOptionPane.showMessageDialog(null, "Invalid speed. Value must be between 0-100.", "Error", JOptionPane.ERROR_MESSAGE);
+                    return false; 
+                }
+            }
+            
+            // Validate Angle 
+            if(rowIndex == 1) {           	
+            	try {
+            	validAngle(text); 
+            	}catch(NumberFormatException e) {
+                    JOptionPane.showMessageDialog(null, "Invalid Angle. Value must be between 0-360.", "Error", JOptionPane.ERROR_MESSAGE);
+                    return false; 
+                }
+            }
+            
+            // Validate Baud Rate 
+            if(rowIndex == 2) { 
+            	try {
+            	validBaudRate(text);
+            	}catch(NumberFormatException e) {
+                    JOptionPane.showMessageDialog(null, "Invalid Baud Rate.", "Error", JOptionPane.ERROR_MESSAGE);
+                    return false; 
+                }
+            }
+            return true;
+        }
+        
+    }
 }
