@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eclipse-userlibraries>
+  <library name="Maven: com.github.purejavacomm:purejavacomm:1.0.2.RELEASE">
+    <archive path="C:/Users/fabri/.m2/repository/com/github/purejavacomm/purejavacomm/1.0.2.RELEASE/purejavacomm-1.0.2.RELEASE.jar" />
+  </library>
+  <library name="Maven: net.java.dev.jna:jna:4.2.2">
+    <archive path="C:/Users/fabri/.m2/repository/net/java/dev/jna/jna/4.2.2/jna-4.2.2.jar" />
+  </library>
+</eclipse-userlibraries>
+
